@@ -9,6 +9,6 @@ COPY . .
 
 ENV PYTHONUNBUFFERED=1
 ENV APP_MODE=bot
-ENV PORT=3000
+ENV PORT=7777
 
 CMD ["sh", "-c", "if [ \"$APP_MODE\" = \"web\" ]; then exec gunicorn -b 0.0.0.0:${PORT} app:app; else exec python main.py; fi"]
