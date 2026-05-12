@@ -10,4 +10,4 @@ COPY . .
 ENV PYTHONUNBUFFERED=1
 ENV PORT=3000
 
-CMD ["sh", "-c", "exec gunicorn -b 0.0.0.0:${PORT} app:app"]
+CMD ["sh", "-c", "exec gunicorn -b 0.0.0.0:${PORT} --access-logfile - --error-logfile - --capture-output --log-level info app:app"]
