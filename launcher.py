@@ -5,7 +5,8 @@ import sys
 import time
 
 
-PORT = str(os.getenv("PORT", "3000"))
+PORT = str(os.getenv("PORT", "7777"))
+RUN_VK_BOT = os.getenv("RUN_VK_BOT", "0").strip().lower() in {"1", "true", "yes", "on"}
 
 
 def _terminate_processes(processes: list[subprocess.Popen]) -> None:
@@ -33,6 +34,7 @@ def _terminate_processes(processes: list[subprocess.Popen]) -> None:
 
 def main() -> int:
     processes: list[subprocess.Popen] = []
+    web_proc: subprocess.Popen | None = None
 
     def _handle_signal(signum, _frame):
         print(f"[launcher] Получен сигнал {signum}, останавливаю процессы...")
@@ -42,9 +44,12 @@ def main() -> int:
     signal.signal(signal.SIGTERM, _handle_signal)
     signal.signal(signal.SIGINT, _handle_signal)
 
-    bot_proc = subprocess.Popen([sys.executable, "main.py"])
-    processes.append(bot_proc)
-    print(f"[launcher] VK bot started with PID {bot_proc.pid}")
+    if RUN_VK_BOT:
+        bot_proc = subprocess.Popen([sys.executable, "main.py"])
+        processes.append(bot_proc)
+        print(f"[launcher] VK bot started with PID {bot_proc.pid}")
+    else:
+        print("[launcher] RUN_VK_BOT is disabled, starting web server only")
 
     web_proc = subprocess.Popen(
         ["gunicorn", "-b", f"0.0.0.0:{PORT}", "app:app"]
@@ -52,15 +57,16 @@ def main() -> int:
     processes.append(web_proc)
     print(f"[launcher] Web server started on 0.0.0.0:{PORT} with PID {web_proc.pid}")
 
-    exit_code = 0
     while True:
-        for proc in processes:
+        for proc in list(processes):
             proc_exit = proc.poll()
             if proc_exit is not None:
-                exit_code = proc_exit
                 print(f"[launcher] Process PID {proc.pid} exited with code {proc_exit}")
-                _terminate_processes(processes)
-                return exit_code
+                processes.remove(proc)
+
+                if proc is web_proc:
+                    _terminate_processes(processes)
+                    return proc_exit
         time.sleep(1)
 
 
