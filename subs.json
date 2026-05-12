@@ -1,0 +1,83 @@
+{
+  "574393629": {
+    "time": "2026-05-05T07:20:35.611434",
+    "claimed": true,
+    "prev_vip_until": "2026-05-26T18:17:49.589359",
+    "reward": {
+      "money": 70000,
+      "vip_days": 7
+    }
+  },
+  "488828183": {
+    "time": "2026-05-05T07:39:42.303898",
+    "claimed": true,
+    "prev_vip_until": "2027-05-21T21:19:30.049270",
+    "reward": {
+      "money": 70000,
+      "vip_days": 7
+    }
+  },
+  "704582542": {
+    "time": "2026-05-05T07:59:09.661853",
+    "claimed": true,
+    "prev_vip_until": "2027-03-29T14:12:36.232057",
+    "reward": {
+      "money": 70000,
+      "vip_days": 7
+    }
+  },
+  "738733496": {
+    "time": "2026-05-05T08:07:17.482053",
+    "claimed": true,
+    "prev_vip_until": "2026-05-26T18:18:25.812395",
+    "reward": {
+      "money": 70000,
+      "vip_days": 7
+    }
+  },
+  "487651590": {
+    "time": "2026-05-05T08:20:40.879520",
+    "claimed": true,
+    "prev_vip_until": "2026-06-18T04:28:33.388930",
+    "reward": {
+      "money": 70000,
+      "vip_days": 7
+    }
+  },
+  "1026817031": {
+    "time": "2026-05-05T08:22:47.169457",
+    "claimed": true,
+    "prev_vip_until": null,
+    "reward": {
+      "money": 70000,
+      "vip_days": 7
+    }
+  },
+  "1030217520": {
+    "time": "2026-05-05T13:00:33.531555",
+    "claimed": true,
+    "prev_vip_until": "2026-05-28T17:12:37.880915",
+    "reward": {
+      "money": 70000,
+      "vip_days": 7
+    }
+  },
+  "638662415": {
+    "time": "2026-05-05T13:27:38.023905",
+    "claimed": true,
+    "prev_vip_until": null,
+    "reward": {
+      "money": 70000,
+      "vip_days": 7
+    }
+  },
+  "754619325": {
+    "time": "2026-05-05T15:38:19.848914",
+    "claimed": true,
+    "prev_vip_until": "2027-04-29T21:02:40.460342",
+    "reward": {
+      "money": 70000,
+      "vip_days": 7
+    }
+  }
+}
